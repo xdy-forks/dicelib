@@ -13,12 +13,15 @@ buildscript {
 // Access Git info from build script
 plugins {
     id "org.ajoberstar.grgit" version "3.0.0"
+    id 'nebula.lint' version '16.0.2'
 }
 
 
 apply plugin: 'java-library'
 apply plugin: 'com.diffplug.gradle.spotless'
 apply plugin: 'maven'
+apply plugin: 'nebula.lint'
+gradleLint.rules = ['all-dependency','all-nebula-renames','archaic-wrapper','duplicate-dependency-class']
 
 
 
@@ -34,14 +37,15 @@ repositories {
     maven { url = 'https://jitpack.io' }
 }
 
-
+task createWrapper(type: Wrapper) {
+    gradleVersion = '5.3.1'
+}
 
 dependencies {
-    compile 'rhino:js:1.6R5'
-    compile 'antlr:antlr:2.7.6'
 //    compile 'net.rptools.parser:parser:1.1.b24'
     implementation 'com.github.RPTools:parser:1.5.5'
     testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile 'com.github.RPTools:parser:1.5.5'
 }
 
 // Custom properties
