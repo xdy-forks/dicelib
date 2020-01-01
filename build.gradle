@@ -42,10 +42,9 @@ task createWrapper(type: Wrapper) {
 }
 
 dependencies {
-//    compile 'net.rptools.parser:parser:1.1.b24'
-    implementation 'com.github.RPTools:parser:1.5.5'
+    implementation 'com.github.xdy-forks:parser:-SNAPSHOT'
+    compile 'com.github.xdy-forks:parser:-SNAPSHOT'
     testCompile group: 'junit', name: 'junit', version: '4.11'
-    compile 'com.github.RPTools:parser:1.5.5'
 }
 
 // Custom properties
