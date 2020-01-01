@@ -46,8 +46,8 @@ task createWrapper(type: Wrapper) {
 }
 
 dependencies {
-    implementation 'com.github.xdy-forks:parser:-SNAPSHOT'
-    compile 'com.github.xdy-forks:parser:-SNAPSHOT'
+    implementation 'com.github.xdy-forks:parser:fixdependencies-SNAPSHOT'
+    compile 'com.github.xdy-forks:parser:fixdependencies-SNAPSHOT'
     testCompile group: 'junit', name: 'junit', version: '4.11'
     compile 'org.ajoberstar.grgit:grgit-gradle:4.0.1'
 }
