@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@SuppressWarnings("SynchronizedMethod")
 public class Result {
   private final String expression;
   private String detailExpression;
@@ -27,53 +28,53 @@ public class Result {
   private String description;
   private List<Integer> rolled;
 
-  private final Map<String, String> properties = new HashMap<String, String>();
+  private final Map<String, String> properties = new HashMap<>();
 
   public Result(String expression) {
     this.expression = expression;
   }
 
-  public String getExpression() {
+  public synchronized String getExpression() {
     return expression;
   }
 
-  public String getDetailExpression() {
+  public synchronized String getDetailExpression() {
     return detailExpression;
   }
 
-  public void setDetailExpression(String detailExpression) {
+  public synchronized void setDetailExpression(String detailExpression) {
     this.detailExpression = detailExpression;
   }
 
-  public String getDescription() {
+  public synchronized String getDescription() {
     return description;
   }
 
-  public void setDescription(String description) {
+  public synchronized void setDescription(String description) {
     this.description = description;
   }
 
-  public Object getValue() {
+  public synchronized Object getValue() {
     return value;
   }
 
-  public void setValue(Object value) {
+  public synchronized void setValue(Object value) {
     this.value = value;
   }
 
-  public Map<String, String> getProperties() {
+  public synchronized Map<String, String> getProperties() {
     return this.properties;
   }
 
-  public void setRolled(List<Integer> rolls) {
+  public synchronized void setRolled(List<Integer> rolls) {
     rolled = new ArrayList<>(rolls);
   }
 
-  public List<Integer> getRolled() {
+  public synchronized List<Integer> getRolled() {
     return Collections.unmodifiableList(rolled);
   }
 
-  public String format() {
+  public synchronized String format() {
     StringBuilder sb = new StringBuilder(64);
     sb.append(expression).append(" = ");
 
